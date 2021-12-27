@@ -9,7 +9,7 @@ class BlockChain:
         genesis_block = self._create_block(
             data="this is genesis block", proof=1, previous_hash="0", index=1)
         self.chain.append(genesis_block)
-        pass
+        
 
     def mine_block(self, data: str) -> dict:
         previous_block = self.get_previous_block()

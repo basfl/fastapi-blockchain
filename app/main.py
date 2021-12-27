@@ -1,6 +1,6 @@
 import fastapi as _fastapi
+from typing import List
 from . import blockchain as _blockchain
-
 from . import schemas
 
 
@@ -14,7 +14,7 @@ async def root():
 
 
 # endpoint to mine a block
-@app.post("/mine_block/")
+@app.post("/mine_block/",response_model=schemas.Response)
 def mine_block(request: schemas.Request):
     if not blockchain.is_chain_valid():
         return _fastapi.HTTPException(status_code=400, detail="The blockchain is invalid")
@@ -24,12 +24,12 @@ def mine_block(request: schemas.Request):
 
 
 # endpoint to return the blockchain
-@app.get("/blockchain/")
+@app.get("/blockchain/", response_model=List[schemas.Response])
 def get_blockchain():
     if not blockchain.is_chain_valid():
         return _fastapi.HTTPException(status_code=400, detail="The blockchain is invalid")
     chain = blockchain.chain
-    return chain
+    return chain 
 
 # endpoint to see if the chain is valid
 
@@ -43,7 +43,7 @@ def is_blockchain_valid():
 # endpoint to return the last block
 
 
-@app.get("/blockchain/last/")
+@app.get("/blockchain/last/",response_model=schemas.Response)
 def previous_block():
     if not blockchain.is_chain_valid():
         return _fastapi.HTTPException(status_code=400, detail="The blockchain is invalid")
