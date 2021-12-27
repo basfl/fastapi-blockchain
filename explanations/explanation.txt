@@ -1,0 +1,30 @@
+"""
+Genesis block 
+{
+    index:0,
+    timestamp:current time,
+    data:"This is a Genisis block",
+    proof:3,
+    previous_hash:"0"
+}->hash()->2343aaa
+
+{
+    index:1,
+    timestamp:current time,
+    data:"hello world",
+    proof:123456,
+    previous_hash:"2343aaa"
+
+}->hash()->987322ffe
+
+{
+    index:2,
+    timestamp:current time,
+    data:"This is secend block",
+    proof:34563,
+    previous_hash:"987322ffe"
+
+}
+
+
+"""
